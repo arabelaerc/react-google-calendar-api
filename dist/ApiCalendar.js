@@ -55,6 +55,7 @@ var ApiCalendar = class {
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
       this.createEventFromNow = this.createEventFromNow.bind(this);
+      this.creatCustomEvent = this.creatCustomEvent.bind(this);
       this.onLoad = this.onLoad.bind(this);
       this.setCalendar = this.setCalendar.bind(this);
       this.updateEvent = this.updateEvent.bind(this);
@@ -206,6 +207,9 @@ var ApiCalendar = class {
         }
       }
     }), calendarId, sendUpdates);
+  }
+  creatCustomEvent(event, calendarId = this.calendar, sendUpdates = "none") {
+    return this.createEvent(event, calendarId, sendUpdates);
   }
   deleteEvent(eventId, calendarId = this.calendar) {
     if (gapi) {

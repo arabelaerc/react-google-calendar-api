@@ -17,6 +17,7 @@ class ApiCalendar {
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
       this.createEventFromNow = this.createEventFromNow.bind(this);
+      this.createCustomEvent = this.createCustomEvent.bind(this);
       this.onLoad = this.onLoad.bind(this);
       this.setCalendar = this.setCalendar.bind(this);
       this.updateEvent = this.updateEvent.bind(this);
@@ -261,6 +262,25 @@ class ApiCalendar {
           },
         },
       },
+      calendarId,
+      sendUpdates
+    );
+  }
+ 
+  /**
+   * Create Calendar event with video conference
+   * @param {string} calendarId for the event.
+   * @param {object} event with start and end dateTime
+   * @param {string} sendUpdates Acceptable values are: "all", "externalOnly", "none"
+   * @returns {any}
+   */
+  public createCustomEvent(
+    event: any,
+    calendarId: string = this.calendar,
+    sendUpdates: "all" | "externalOnly" | "none" = "none"
+  ): any {
+    return this.createEvent(
+      event,
       calendarId,
       sendUpdates
     );
